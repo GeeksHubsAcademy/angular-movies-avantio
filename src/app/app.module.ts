@@ -7,6 +7,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { DisplayMovieComponent } from './display-movie/display-movie.component';
 import { CategoryMoviesComponent } from './category-movies/category-movies.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DisplayMoviesComponent } from './display-movies/display-movies.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NavigationComponent,
     DisplayMovieComponent,
     CategoryMoviesComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DisplayMoviesComponent
   ],
   imports: [
     BrowserModule,
