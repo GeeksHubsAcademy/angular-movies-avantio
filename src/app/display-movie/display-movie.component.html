@@ -1,1 +1,29 @@
-<p>display-movie works!</p>
+<div class="movie" *ngIf="movie">
+  <h1>
+    {{ movie.title }}
+  </h1>
+  <h3>{{movie.tagline}}</h3>
+  <div class="countries">
+    <span class="country" *ngFor="let country of movie.production_countries">
+      {{ country.name }}
+    </span>
+  </div>
+  <time>{{ movie.release_date }}</time>
+  <div class="genres">
+    <span class="genre" *ngFor="let genre of movie.genres">
+      {{ genre.name }}
+    </span>
+  </div>
+  <p>{{ movie.overview }}</p>
+  <div class="productors">
+    <img
+      *ngFor="let productor of movie.production_companies"
+      src="https://image.tmdb.org/t/p/w200{{ productor.logo_path }}"
+      alt=""
+    />
+  </div>
+</div>
+
+<pre>
+  {{ movie | json }}
+</pre>

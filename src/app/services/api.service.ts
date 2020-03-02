@@ -19,4 +19,7 @@ export class ApiService {
       throw new Error("invalid category");
     }
   }
+  getMovie(id: string) {
+      return this.http.get(this.baseUrl("movie/" + id)).toPromise();
+  }
 }
