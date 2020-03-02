@@ -1,3 +1,11 @@
-<pre>
-  {{data | json}}
-</pre>
+<div class="wrapper">
+  <a
+  routerLink="/movie/{{ movie.id }}"
+  class="movieCard"
+  *ngFor="let movie of data"
+  [style.backgroundImage]="'url(https://image.tmdb.org/t/p/w500'+ movie.backdrop_path +')'"
+>
+  <h4>{{ movie.title }}</h4>
+</a>
+
+</div>

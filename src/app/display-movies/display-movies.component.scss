@@ -1,0 +1,17 @@
+.movieCard {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #000b;
+  background-blend-mode: darken;
+  padding: 1em;
+  color: white;
+  text-decoration: none;
+  min-height: 100px;
+
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap :1em;
+}
