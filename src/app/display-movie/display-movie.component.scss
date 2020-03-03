@@ -31,7 +31,15 @@
     display: inline;
   }
 }
+button {
+  all:unset;
+  color: #1fc;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.6em;
 
+
+}
 .movie {
   display: flex;
   justify-content: space-between;

@@ -2,7 +2,9 @@
   <div class="info">
     <h1>
       {{ movie.title }}
+      <button (click)="saveMovie()">save</button>
     </h1>
+
     <ngb-rating [rate]="movie.vote_average" [readonly]="true"></ngb-rating>
     <h3>{{ movie.tagline }}</h3>
     <div class="countries">
@@ -10,7 +12,10 @@
         {{ country.name }}
       </span>
     </div>
-    <time>{{ movie.release_date }}</time>
+    <h6>
+      <time>{{ movie.release_date }}</time>
+    </h6>
+
     <div class="genres">
       <span class="genre" *ngFor="let genre of movie.genres">
         {{ genre.name }}
@@ -25,19 +30,18 @@
       />
     </div>
   </div>
-  <div class="poster" [style.backgroundImage]="
+  <div
+    class="poster"
+    [style.backgroundImage]="
       'url(https://image.tmdb.org/t/p/original' + movie.poster_path + ')'
-    ">
-
-  </div>
+    "
+  ></div>
 </div>
 
-
 <h2 *ngIf="error">
- {{error}}
+  {{ error }}
 </h2>
 
-
-<div class="related" >
+<div class="related">
   <app-display-movies [data]="relatedMovies"></app-display-movies>
 </div>

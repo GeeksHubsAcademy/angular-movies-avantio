@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { ApiService } from "../services/api.service";
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: "app-display-movie",
@@ -15,7 +16,8 @@ export class DisplayMovieComponent implements OnInit, OnDestroy {
   paramSubscription: { unsubscribe: () => void };
   constructor(
     private activatedRoute: ActivatedRoute,
-    private api: ApiService
+    private api: ApiService,
+    private storage: StorageService
   ) {}
   async getMovieData() {
     try {
@@ -37,6 +39,11 @@ export class DisplayMovieComponent implements OnInit, OnDestroy {
     } catch (error) {
       console.dir(error);
     }
+  }
+
+
+  saveMovie() {
+    this.storage.saveMovie(this.id);
   }
 
   ngOnInit(): void {
