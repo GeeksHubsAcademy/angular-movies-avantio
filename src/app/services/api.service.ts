@@ -12,7 +12,12 @@ export class ApiService {
 
   getCategory(category: string) {
     category = category.toLowerCase();
-    const validCategories = ["popular", "upcoming", "top_rated"];
+    const validCategories = [
+      "popular",
+      "upcoming",
+      "top_rated",
+      "now_playing"
+    ];
     if (validCategories.includes(category)) {
       return this.http.get(this.baseUrl("movie/" + category)).toPromise();
     } else {
