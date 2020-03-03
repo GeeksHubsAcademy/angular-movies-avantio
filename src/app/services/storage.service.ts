@@ -16,4 +16,7 @@ export class StorageService {
   getMovies() {
     return this.movies;
   }
+  getLength() {
+    return this.movies.length;
+  }
 }
