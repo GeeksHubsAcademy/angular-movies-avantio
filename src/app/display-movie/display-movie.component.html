@@ -1,4 +1,4 @@
-<div class="movie" *ngIf="movie">
+<div class="movie" *ngIf="movie && !error">
   <div class="info">
     <h1>
       {{ movie.title }}
@@ -31,7 +31,13 @@
 
   </div>
 </div>
-<div class="related">
 
+
+<h2 *ngIf="error">
+ {{error}}
+</h2>
+
+
+<div class="related" >
   <app-display-movies [data]="relatedMovies"></app-display-movies>
 </div>
