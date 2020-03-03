@@ -10,7 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { DisplayMoviesComponent } from './display-movies/display-movies.component';
 import { ApiService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
-import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbRatingModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import { SavedMoviesComponent } from './saved-movies/saved-movies.component';
 @NgModule({
   declarations: [
@@ -22,7 +22,13 @@ import { SavedMoviesComponent } from './saved-movies/saved-movies.component';
     DisplayMoviesComponent,
     SavedMoviesComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbRatingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NgbRatingModule,
+    NgbPaginationModule
+  ],
   providers: [ApiService],
   bootstrap: [AppComponent]
 })

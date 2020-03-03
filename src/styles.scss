@@ -13,3 +13,14 @@ ngb-rating {
   color: yellow;
   font-size: 2em;
 }
+
+.pagination {
+   display: flex;
+   justify-content: center;
+   padding: 1em;;
+   a {
+     background-color: #444 !important;
+     color: white !important;
+    //  border-color: #555;
+   }
+}
