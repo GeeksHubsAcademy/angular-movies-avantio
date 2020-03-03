@@ -12,6 +12,7 @@ export class CategoryMoviesComponent implements OnInit, OnDestroy {
   category: string;
   error: string;
   paramSubscription: { unsubscribe: () =>  void};
+  page = 1;
 constructor(private activatedRoute: ActivatedRoute , private api: ApiService) {}
 
   ngOnInit(): void {
@@ -19,7 +20,7 @@ constructor(private activatedRoute: ActivatedRoute , private api: ApiService) {}
       try {
         this.error = null;
         this.category = params.get("category");
-        const result: any = await this.api.getCategory(this.category);
+        const result: any = await this.api.getCategory(this.category, 1);
         console.log(result);
 
 
@@ -29,6 +30,14 @@ constructor(private activatedRoute: ActivatedRoute , private api: ApiService) {}
       }
 
     });
+  }
+
+ async  getMoreMovies() {
+    this.page++;
+    const result: any = await this.api.getCategory(this.category, this.page);
+    console.log(result);
+
+    this.movies = [...this.movies, ...result.results];
   }
   ngOnDestroy() {
     this.paramSubscription.unsubscribe();

@@ -6,3 +6,4 @@
   {{error}}
 </div>
 <app-display-movies *ngIf="!error"  [data]="movies" ></app-display-movies>
+<button (click)="getMoreMovies()">more</button>
