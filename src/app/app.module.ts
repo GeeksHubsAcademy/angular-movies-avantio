@@ -10,7 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { DisplayMoviesComponent } from './display-movies/display-movies.component';
 import { ApiService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
-
+import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,12 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     NotFoundComponent,
     DisplayMoviesComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbRatingModule],
   providers: [ApiService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
