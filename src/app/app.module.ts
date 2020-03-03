@@ -11,6 +11,7 @@ import { DisplayMoviesComponent } from './display-movies/display-movies.componen
 import { ApiService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
+import { SavedMoviesComponent } from './saved-movies/saved-movies.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
     DisplayMovieComponent,
     CategoryMoviesComponent,
     NotFoundComponent,
-    DisplayMoviesComponent
+    DisplayMoviesComponent,
+    SavedMoviesComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbRatingModule],
   providers: [ApiService],
