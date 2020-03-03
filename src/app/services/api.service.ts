@@ -14,12 +14,15 @@ export class ApiService {
     category = category.toLowerCase();
     const validCategories = ["popular", "upcoming", "top_rated"];
     if (validCategories.includes(category)) {
-      return this.http.get(this.baseUrl('movie/' + category)).toPromise();
+      return this.http.get(this.baseUrl("movie/" + category)).toPromise();
     } else {
       throw new Error("invalid category");
     }
   }
   getMovie(id: string) {
-      return this.http.get(this.baseUrl("movie/" + id)).toPromise();
+    return this.http.get(this.baseUrl("movie/" + id)).toPromise();
+  }
+  getRelated(id: string) {
+    return this.http.get(this.baseUrl("movie/" + id + "/similar")).toPromise();
   }
 }
