@@ -1,0 +1,6 @@
+<header>
+  <input type="text" [(ngModel)]="query" (input)="search()" placeholder="search here...">
+</header>
+<h1>{{query}}</h1>
+
+<app-display-movies [data]="results"></app-display-movies>

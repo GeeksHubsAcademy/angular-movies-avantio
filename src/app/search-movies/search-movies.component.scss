@@ -1,0 +1,18 @@
+header {
+  display:flex;
+  justify-content: center;
+  padding: 1em;
+  input {
+    all:unset;
+    background-color: #555;
+    color:white;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5em;
+    border-radius: 0.2em;;
+  }
+}
+
+:host {
+  padding: 2em;
+  display: block;
+}

@@ -4,6 +4,7 @@ import { DisplayMovieComponent } from './display-movie/display-movie.component';
 import { CategoryMoviesComponent } from './category-movies/category-movies.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SavedMoviesComponent } from './saved-movies/saved-movies.component';
+import { SearchMoviesComponent } from './search-movies/search-movies.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: "movies/:category", component: CategoryMoviesComponent },
   { path: "movie/:id", component: DisplayMovieComponent },
   { path: "saved", component: SavedMoviesComponent },
+  { path: "search", component: SearchMoviesComponent },
   { path: "**", component: NotFoundComponent }
 ];
 
