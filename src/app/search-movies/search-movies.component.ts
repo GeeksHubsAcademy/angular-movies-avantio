@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { UtilsService } from '../services/utils.service';
 
 @Component({
-  selector: 'app-search-movies',
-  templateUrl: './search-movies.component.html',
-  styleUrls: ['./search-movies.component.scss']
+  selector: "app-search-movies",
+  templateUrl: "./search-movies.component.html",
+  styleUrls: ["./search-movies.component.scss"]
 })
 export class SearchMoviesComponent implements OnInit {
-  query  = '';
+  query = "";
   results: any[] = [];
-  search = () => {
-    console.log(this.query);
+  constructor(private api: ApiService, private utils: UtilsService) {}
+  searchRaw = (query) => {
+    console.log(query);
 
-    this.api.searchMovie(this.query).then(response => {
-        this.results = response.results;
-    })
-  }
-  constructor(private api: ApiService) { }
+    this.api.searchMovie(query).then(response => {
+      this.results = response.results;
+    });
+  };
 
-  ngOnInit(): void {
-  }
+  search = this.utils.debounce(this.searchRaw, 300);
 
+  ngOnInit(): void {}
 }
