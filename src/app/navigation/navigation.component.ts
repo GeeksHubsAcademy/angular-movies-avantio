@@ -7,12 +7,14 @@ import { StorageService } from "../services/storage.service";
   styleUrls: ["./navigation.component.scss"]
 })
 export class NavigationComponent implements OnInit {
-  savedLength : number;
+  savedLength: number;
   constructor(private storage: StorageService) {}
 
   ngOnInit(): void {
-   this.storage.observableLength.subscribe((data: number) => {
-     this.savedLength = data;
-   });
+    this.savedLength = this.storage.getLength();
+    this.storage.observableLength.subscribe((data: number) => {
+
+      this.savedLength = data;
+    });
   }
 }
