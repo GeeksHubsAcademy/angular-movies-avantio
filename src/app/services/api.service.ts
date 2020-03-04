@@ -7,10 +7,22 @@ import { HttpClient } from "@angular/common/http";
 export class ApiService {
   constructor(private http: HttpClient) {}
   apikey = "cea68b520beecac6718820e4ac576c3a";
+  cache = fn => {
+    const cached = {};
+
+    return (...args) => {
+      const key = args.join("-");
+      if (!cached[key]) {
+        cached[key] = fn(...args);
+      }
+      return cached[key];
+    };
+  };
+
   baseUrl = (endpoint, page = 1) =>
     `https://api.themoviedb.org/3/${endpoint}?api_key=${this.apikey}&page=${page}&language=en-US`;
 
-  getCategory(category: string, page:number) {
+  getCategoryRaw = (category: string, page: number) => {
     category = category.toLowerCase();
     const validCategories = ["popular", "upcoming", "top_rated", "now_playing"];
     if (validCategories.includes(category)) {
@@ -19,14 +31,18 @@ export class ApiService {
       throw new Error("invalid category");
     }
   }
-  getMovie(id: string) {
-    return this.http.get(this.baseUrl("movie/" + id)).toPromise();
-  }
-  getRelated(id: string) {
-    return this.http.get(this.baseUrl("movie/" + id + "/similar")).toPromise();
-  }
-  getMovies (ids: string[]) {
-     return Promise.all( ids.map(id => this.getMovie(id) ));
+  getCategory = this.cache(this.getCategoryRaw)
 
+  private getMovieRaw = (id: string) => {
+    return this.http.get(this.baseUrl("movie/" + id)).toPromise();
+  };
+  private getRelatedRaw = (id: string) => {
+    return this.http.get(this.baseUrl("movie/" + id + "/similar")).toPromise();
+  };
+  getMovies(ids: string[]) {
+    return Promise.all(ids.map(id => this.getMovie(id)));
   }
+  getMovie = this.cache(this.getMovieRaw);
+
+  getRelated = this.cache(this.getRelatedRaw);
 }
